@@ -1,1 +1,73 @@
-<h1 class="text-success">Inicio de sesión</h1>
+<div id="logonWaves">
+    <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg"
+        class="transition duration-300 ease-in-out delay-150">
+
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+                <stop offset="5%" stop-color="#F78DA7"></stop>
+                <stop offset="95%" stop-color="#8ED1FC"></stop>
+            </linearGradient>
+        </defs>
+        <path
+            d="M 0,700 L 0,356 C 91.25128205128203,344.98333333333335 182.50256410256407,333.96666666666664 270,313 C 357.49743589743593,292.03333333333336 441.24102564102566,261.1166666666667 505,230 C 568.7589743589743,198.8833333333333 612.5333333333332,167.56666666666666 694,161 C 775.4666666666668,154.43333333333334 894.6256410256412,172.61666666666667 991,144 C 1087.3743589743588,115.38333333333333 1160.9641025641024,39.96666666666667 1232,5 C 1303.0358974358976,-29.966666666666665 1371.517948717949,-24.483333333333334 1440,-19 L 1440,700 L 0,700 Z"
+            stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="0.4"
+            class="transition-all duration-300 ease-in-out delay-150 path-0"></path>
+
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+                <stop offset="5%" stop-color="#F78DA7"></stop>
+                <stop offset="95%" stop-color="#8ED1FC"></stop>
+            </linearGradient>
+        </defs>
+        <path
+            d="M 0,700 L 0,531 C 73.97179487179486,514.3064102564103 147.9435897435897,497.6128205128206 243,494 C 338.0564102564103,490.3871794871794 454.197435897436,499.85512820512815 524,491 C 593.802564102564,482.14487179487185 617.2666666666665,454.9666666666667 693,418 C 768.7333333333335,381.0333333333333 896.7358974358974,334.2782051282051 992,300 C 1087.2641025641026,265.7217948717949 1149.7897435897435,243.9205128205128 1219,222 C 1288.2102564102565,200.0794871794872 1364.1051282051283,178.03974358974358 1440,156 L 1440,700 L 0,700 Z"
+            stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="0.53"
+            class="transition-all duration-300 ease-in-out delay-150 path-1"></path>
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+                <stop offset="5%" stop-color="#F78DA7"></stop>
+                <stop offset="95%" stop-color="#8ED1FC"></stop>
+            </linearGradient>
+        </defs>
+        <path
+            d="M 0,700 L 0,706 C 64.77435897435896,748.2397435897436 129.54871794871792,790.4794871794873 211,765 C 292.4512820512821,739.5205128205127 390.5794871794873,646.321794871795 477,597 C 563.4205128205127,547.678205128205 638.1333333333334,542.2333333333332 720,547 C 801.8666666666666,551.7666666666668 890.8871794871793,566.7448717948719 973,529 C 1055.1128205128207,491.2551282051282 1130.3179487179486,400.7871794871795 1207,359 C 1283.6820512820514,317.2128205128205 1361.8410256410257,324.10641025641024 1440,331 L 1440,700 L 0,700 Z"
+            stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1"
+            class="transition-all duration-300 ease-in-out delay-150 path-2"></path>
+    </svg>
+</div>
+<div class="container-fluid">
+    <form id="setLogin" class="card position-absolute top-50 start-50 translate-middle">
+        <input type="hidden" name="route" value="login/set">
+        <div class="card-body">
+            <div class="card-title lh-1 mb-3">
+                <span class="fs-5 fw-bold">Inicie sesi&oacute;n</span><br>
+                <small class="text-muted">
+                    Ingrese su usuario y contraseña para acceder a Dastan
+                </small>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-5 col-lg-4 mb-3">
+                    <div class="input-group">
+                        <div class="input-group-text">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <input type="text" name="username" class="form-control">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-3">
+                    <div class="input-group">
+                        <div class="input-group-text">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <input type="password" name="pw" class="form-control">
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 col-lg-4">
+                    <button class="btn btn-primary">
+                        <i class="fa-solid fa-unlock me-2"></i>Ingresar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

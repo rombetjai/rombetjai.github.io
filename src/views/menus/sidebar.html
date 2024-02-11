@@ -1,0 +1,75 @@
+<a id="toggleCanvas" data-bs-toggle="offcanvas" href="#sidebar" role="button">
+    <i class="fa-solid fa-bars text-light mx-auto"></i>
+</a>
+<div class="glass offcanvas offcanvas-start" tabindex="-1" id="sidebar">
+    <div class="offcanvas-header lh-1">
+        <span class="offcanvas-title">
+            <div class="d-flex">
+                <img class="rounded-circle me-2" src="https://placehold.co/48x48" alt="">
+                <div class="lh-1 my-auto">
+                    <span class="fw-semibold">Jailer Betancourt</span><br>
+                    <small class="text-muted">Total: $5.567.050</small>
+                </div>
+            </div>
+        </span>
+        <button type="button" class="btn btn-sm fa-solid fa-times" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="menu">
+            <a href="#misGastos" data-bs-toggle="collapse" aria-expanded="true" role="button">Mis gastos</a>
+            <ul class="collapsed submenu" id="misGastos">
+                <li>
+                    <div class="menu-item">
+                        <i class="fa-solid fa-check-circle"></i>Ver lista
+                    </div>
+                </li>
+                <li>
+                    <div class="menu-item">
+                        <i class="fa-solid fa-plus-circle"></i>Agregar nuevo
+                    </div>
+                </li>
+            </ul>
+            <a href="#misIngresos" data-bs-toggle="collapse" aria-expanded="true" role="button">Mis ingresos</a>
+            <ul class="collapsed submenu" id="misIngresos">
+                <li>
+                    <div class="menu-item">
+                        <i class="fa-solid fa-check-circle"></i>Ver lista
+                    </div>
+                </li>
+                <li>
+                    <div class="menu-item">
+                        <i class="fa-solid fa-plus-circle"></i>Agregar nuevo
+                    </div>
+                </li>
+                <li>
+                    <div class="menu-item">
+                        <i class="fa-solid fa-pen-alt"></i>Gestionar cuentas
+                    </div>
+                </li>
+            </ul>
+            <hr>
+            <a href="#miPerfil" data-bs-toggle="collapse" aria-expanded="false" role="button">Cuenta</a>
+            <ul class="collapse submenu" id="miPerfil">
+                <li>
+                    <div class="menu-item" name="account/photo">
+                        <i class="fa-solid fa-image"></i>Cambiar mi foto
+                    </div>
+                </li>
+                <li>
+                    <div class="menu-item" name="account/pw">
+                        <i class="fa-solid fa-unlock"></i>Cambiar clave
+                    </div>
+                </li>
+                <li>
+                    <div class="menu-item" name="account/kill">
+                        <i class="fa-solid fa-times-circle"></i>Cerrar sesi&oacute;n
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="mainContent" class="container-fluid p-4"></div>
+
+<img class="bg-wave" src="./src/img/bubles.svg" alt="bubles" srcset="">
+<img class="bg-wave" src="./src/img/wave_purple.svg" alt="waves" srcset="">

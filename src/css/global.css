@@ -1,0 +1,45 @@
+input.form-control,
+input.form-select,
+.input-group-text {
+    border-radius: 10rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #9e86fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.01rem rgba(113, 13, 253, 0.25);
+}
+
+:root{
+    font-size: small;
+}
+
+div.input-group-text {
+    font-size: smaller;
+}
+
+.is-glass {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+}
+
+.shake {
+    animation-name: shake;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-10px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(10px);
+    }
+}

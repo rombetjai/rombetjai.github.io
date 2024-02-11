@@ -1,12 +1,21 @@
-async function init(){
-    let storage = Core.storage.get()
-    if(!storage) {
-        let response = await Core.views.get(Core.routes.logon)
-        await Core.views.set(response, Dastan)
+async function init() {
+    let keySS = Core.utils.cookies.get('dS')
+    Core.loader('')
+    if (!keySS) {
+        await Core.views.get(Core.routes.logon, Dastan)
         return Core.loader()
     }
-
-    // Traer vista por defecto.
+    else {
+        Core.loader('Comprobando sesión encontrada')
+        /* let p = { route: 'login/get', key: keySS }
+        let res = await Core.api.call(p)
+        if (!res.authorized) {
+            await Core.views.get(Core.routes.logon, Dastan)
+            return Core.loader()
+        } */
+        await Core.views.get(Core.routes.sidebar, Dastan)
+        Core.loader()
+    }
 }
 
 init()
