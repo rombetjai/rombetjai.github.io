@@ -1,9 +1,12 @@
-.bg-wave {
+body {
+    min-width: 100vh;
+}
+
+#logonWaves {
     position: fixed;
-    display: flex;
     bottom: 0px;
+    width: 100%;
     z-index: -1;
-    min-width: 100vw;
 }
 
 #sidebar {

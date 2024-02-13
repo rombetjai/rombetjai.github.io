@@ -44,13 +44,12 @@ var Core = {
 
 
             return new Promise((resolve, reject) => {
-                console.info('API was call with params', payload)
                 fetch(url, options)
                     .then(u => u.json())
                     .then(u => {
                         if (u.token) this.setEnviron(u)
                         if (u.cookie) Core.utils.cookies.set(u.cookie.key, u.cookie.value, u.cookie.expires)
-                        console.info('API Response with params', u)
+                        if(u.glass) Glass.fire(u.glass)
                         resolve(u)
                     })
                     .catch(async x => {
