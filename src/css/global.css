@@ -43,3 +43,7 @@ div.input-group-text {
         transform: translateX(10px);
     }
 }
+
+.is-link{
+    cursor: pointer;
+}

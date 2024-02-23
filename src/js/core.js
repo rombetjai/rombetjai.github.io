@@ -41,15 +41,14 @@ var Core = {
             }
 
             if (forceProd) url = this.prod
-
-
             return new Promise((resolve, reject) => {
                 fetch(url, options)
                     .then(u => u.json())
                     .then(u => {
                         if (u.token) this.setEnviron(u)
                         if (u.cookie) Core.utils.cookies.set(u.cookie.key, u.cookie.value, u.cookie.expires)
-                        if(u.glass) Glass.fire(u.glass)
+                        if (u.glass) Glass.fire(u.glass)
+                        if (u.noty) Glass.noty(u.noty)
                         resolve(u)
                     })
                     .catch(async x => {
@@ -74,12 +73,13 @@ var Core = {
         setEnviron: async function (config) {
             if (!config) return Core.utils.cookies.delete('gas')
             if (!config.token) {
-                Core.utils.alert({ title: 'Modo desarrollo', message: 'Se está estableciendo el modo de desarrollo', type: 'info' })
+                Core.utils.alert({ title: 'Modo desarrollo', body: 'Se está estableciendo el modo de desarrollo', type: 'info' })
                 return await this.call({ action: 'utils', subaction: 'setDev' }, true)
             }
             Core.utils.cookies.set('gas', config.token, 10)
             Core.utils.cookies.set('gasdev', true, 60 * 8)
-            Core.utils.alert({ title: 'Modo desarrollo', message: 'Se estableció el modo de desarrollo', type: 'warning' })
+            Core.utils.alert({ title: 'Modo desarrollo', body: 'Se estableció el modo de desarrollo', type: 'warning', delay: 5000 })
+            Core.loader()
         }
     },
     loader: (show) => {
@@ -152,9 +152,7 @@ var Core = {
                 document.cookie = key + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             }
         },
-        alert: (config) => {
-            console.log(config)
-        },
+        alert: (config) => Glass.noty(config),
         getFormData: (selector) => {
             const form = document.querySelector(selector);
             const formData = {};

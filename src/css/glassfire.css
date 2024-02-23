@@ -27,6 +27,15 @@
 #gCard {
     -webkit-animation: rotateCube 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: rotateCube 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    z-index: 999;
+}
+
+#gCard #gHeader {
+    border-radius: 5px 5px 0px 0px;
+}
+
+#gCard #gHeader, #gCard #gBody {
+    padding: 0.5rem;
 }
 
 #gBackdrop {
@@ -76,6 +85,7 @@
         transform: scale(1);
         opacity: 1;
     }
+
     100% {
         transform: scale(0);
         opacity: 0;
@@ -88,4 +98,73 @@
 
 #gBody {
     background: rgb(255 255 255 / 60%)
+}
+
+/* CSS para las notificaciones */
+
+#notys {
+    overflow-y: auto;
+    max-height: 95vh;
+}
+
+.noty {
+    overflow: hidden;
+}
+
+[noty-info="card"].show {
+    animation: entrar 0.5s ease 0s 1 normal forwards;
+    border-radius: 10px 10px;
+}
+
+[noty-info="card"] [noty-info="header"] {
+    border-radius: 10px 10px 0px 0px;
+}
+
+[noty-info="card"] [noty-info="close"] {
+    cursor: pointer;
+    color: #ffffff6e
+}
+
+[noty-info="card"] [noty-info="close"]:hover {
+    color: black;
+}
+
+[noty-info="card"] [noty-info="header"]::after {
+    content: '';
+    position: absolute;
+    right: 80px;
+    width: 50px;
+    height: 33px;
+    background: #ffffff30;
+    transform: skew(245deg);
+    z-index: inherit;
+    top: 0;
+}
+
+[noty-info="card"].exit {
+    animation: salir 0.5s ease 0s 1 normal forwards;
+}
+
+@keyframes entrar {
+    0% {
+        opacity: 0;
+        transform: translateX(250px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes salir {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(250px);
+    }
 }

@@ -6,7 +6,7 @@ async function logonHandler(ev) {
     data.pw = CryptoJS.SHA256(data.pw).toString()
     let res = await Core.api.call(data)
     Core.loader()
-    if(!res.authorized) return Core.utils.alert(res.alert)
+    if(!res.authorized) return
     await Core.views.get(Core.routes.sidebar, Dastan)
 }
 

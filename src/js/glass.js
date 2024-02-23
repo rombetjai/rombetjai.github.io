@@ -62,16 +62,14 @@ var Glass = {
             icon: 'https://i.ibb.co/wKPTzmW/tullave-logo.png'
         }
         Glass.config.template = `        
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" id="gSize">
-                <div class="modal-content is-glass">
                     <div class="modal-header" id="gHeader">
                         <span class="modal-title fw-semibold" id="gTitle"></span>
                     </div>
-                    <div class="modal-body" id="gBody">
+                    <div class="modal-body px-3 border-start border-end" id="gBody">
                         <div id="gContent"></div>
                         <form id="gForm"></form>
                     </div>
-                    <div class="modal-footer d-block" id="gFooter">
+                    <div class="modal-footer border-bottom border-start border-end p-2 py-3 d-block" id="gFooter">
                         <div class="alert alert-danger mb-3 d-none" id="gAlert"></div>
                         <div class="d-flex align-items-end justify-content-end">
                             <button class="btn btn-outline-primary btn-sm me-2" id="gConfirm">
@@ -82,8 +80,6 @@ var Glass = {
                             </button>
                         </div>
                     </div>
-                </div>
-            </div>
         `;
         Glass.config.backdrop = `<div class="glass-back"></div>`
         document.addEventListener('click', function (e) {
@@ -95,6 +91,38 @@ var Glass = {
                         this.classList.remove('shake');
                     });
                 }
+            }
+        });
+        Glass.config.noty = `
+            <div noty-info="header" class="bg-opacity-50 px-2 pt-2 d-flex">
+                <div noty-info="title" class="card-title"></div>
+                <div noty-info="close" class="ms-auto" >
+                    <i noty-info="close" class="fa-solid fa-times-circle"></i>
+                </div>
+            </div>
+            <div class="p-2" noty-info="body"></div>`
+        document.addEventListener('click', function (e) {
+            if (e.target.matches('[noty-info="close"]')) {
+                let el = e.target.closest('.card')
+                el.classList.replace('show', 'exit')
+                el.addEventListener('animationend', function () {
+                    this.classList.remove('exit');
+                    this.parentNode.removeChild(this)
+                    let remain = document.querySelectorAll('[noty-info="card"]')
+                    if (remain.length == 0) {
+                        let container = document.getElementById('notys')
+                        container.parentNode.removeChild(container)
+                    }
+                });
+            }
+
+            if (e.target.matches('[noty-info="clipboard"]')) {
+                let content = e.target.getAttribute('noty-data');
+                let data = JSON.parse(decodeURI(content))
+                Glass.fire({
+                    title: 'Información', type: 'warning',
+                    body: `<code>${data}</code>`
+                })
             }
         });
     },
@@ -113,18 +141,16 @@ var Glass = {
         Glass.counter++
         const element = document.createElement('div')
         element.id = 'gCard';
-        element.classList.add('modal', 'show')
+        //element.classList.add('modal', 'show')
         element.setAttribute('tabindex', '-1')
-        element.setAttribute('aria-modal', 'true')
-        element.setAttribute('role', 'dialog')
-        element.style.display = 'flow'
+        element.classList.add('position-absolute', 'top-50', 'start-50', 'translate-middle')
 
         element.tabIndex = -1;
         element.setAttribute('aria-hidden', 'true');
         element.innerHTML = config.template || Glass.config.template;
 
-        let card = element.querySelector('#gSize')
-        !config.size ? card.classList.add('modal-sm') : card.classList.add(`modal-${config.size}`)
+        /* let card = element.querySelector('#gSize')
+        !config.size ? card.classList.add('modal-sm') : card.classList.add(`modal-${config.size}`) */
 
         if (!config.title) {
             const header = element.querySelector('#gTitle');
@@ -257,6 +283,46 @@ var Glass = {
         container += elements.join('').trim()
         container += '</div>'
         return container
+    },
+    noty: function (config) {
+        let counter = Glass.counter
+        Glass.counter++
+
+        // Verificar si ya existe el contenedor
+        let element = document.querySelector('.noty')
+        if (!element) {
+            element = document.createElement('div')
+            element.id = 'notys'
+            element.classList.add('noty', 'position-absolute', 'bottom-0', 'end-0', 'me-4', 'mb-4')
+            element.setAttribute('tabindex', '-1')
+            element.style.width = config.size || '300px'
+            document.body.appendChild(element)
+        }
+
+        let child = document.createElement('div')
+        child.classList.add('card', 'mt-3', 'show')
+        child.setAttribute('noty-info', 'card')
+        child.innerHTML = Glass.config.noty
+
+        // Establecer configuración
+        child.querySelector('[noty-info="header"]').classList.add(`bg-${config.type || 'dark'}`)
+        child.querySelector('[noty-info="title"]').innerHTML = config.title
+        child.querySelector('[noty-info="body"]').innerHTML = config.body
+
+        // Establecer tiempo de quitar notificación
+        if (!config.delay) {
+            if (config.delay != 0)
+                setTimeout(() => {
+                    child.classList.replace('show', 'exit')
+                    child.addEventListener('animationend', function () {
+                        this.classList.remove('exit');
+                        this.parentNode.removeChild(this)
+                        let remain = document.querySelectorAll('[noty-info="card"]')
+                        if (remain.length == 0) element.parentNode.removeChild(element)
+                    });
+                }, (config.delay || 3) * 1000)
+        }
+        element.appendChild(child)
     }
 
 }

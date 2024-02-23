@@ -7,9 +7,9 @@ async function init() {
     }
     else {
         Core.loader('Comprobando sesión encontrada')
-        /* let p = { route: 'login/get', key: keySS }
-        let res = await Core.api.call(p)
-        if (!res.authorized) {
+        let p = { route: 'login/set', key: keySS }
+        //let res = await Core.api.call(p)
+        /* if (!res.authorized) {
             await Core.views.get(Core.routes.logon, Dastan)
             return Core.loader()
         } */
