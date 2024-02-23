@@ -4,6 +4,10 @@ input.form-select,
     border-radius: 10rem;
 }
 
+main{
+    max-width: 100%;
+}
+
 .form-control:focus, .form-select:focus {
     border-color: #9e86fe;
     outline: 0;
